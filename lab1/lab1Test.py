@@ -55,5 +55,4 @@ I, J, dTrue = get_cameraman()
 Ig, Jg, Jgdx, Jgdy = gradCalc(I, J, 6, 3)
 
 error = estimateE(Ig, Jg, Jgdx, Jgdy, 120, 85, [70,40])
-
 print(error)

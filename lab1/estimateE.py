@@ -1,5 +1,6 @@
 import numpy as np
 import scipy
+import math
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
@@ -19,5 +20,6 @@ def estimateE(Ig, Jg, Jgdx, Jgdy, x, y, window_size):
 
     diff = IgWin-JgWin
     error = np.transpose([np.multiply(diff,JgdxWin), np.multiply(diff,JgdxWin)])
-
+    error = error.sum(axis=1)
+    error = error.sum(axis=0)
     return error
