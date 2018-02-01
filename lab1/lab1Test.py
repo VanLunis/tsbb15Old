@@ -38,7 +38,6 @@ plt.imshow(Jgdy, cmap='gray')
 plt.show()
 '''
 
-
 # Estimate T test
 '''
 print('Shape of image: ' + str(I.shape))
@@ -57,8 +56,16 @@ print('e in test: ' + str(e))
 # interpolation function test
 '''
 Ig, Jg, Jgdx, Jgdy = gradCalc(I, J, 6, 3)
-JNew, dxNew, dyNew = interpolImage(J, Jgdx, Jgdy, dTrue, 0, 236, 0, 236)
+JNew, dxNew, dyNew = interpolImage(J, Jgdx, Jgdy, [-dTrue[0],-dTrue[1]], 0, 236, 0, 236)
 
+
+fig, axes = plt.subplots(1, 3, sharex=True, sharey=True)
+for im, name, ax in zip((I, JNew, J), ('I','Jnew', 'J'), axes.flat):
+    ax.imshow(im, cmap='gray')
+    ax.set_title(name)
+plt.show()
+'''
+'''
 plt.figure()
 plt.subplot(1, 3, 1)
 plt.title('I')
@@ -69,7 +76,8 @@ plt.imshow(JNew, cmap='gray')
 plt.subplot(1, 3, 3)
 plt.title('J')
 plt.imshow(J, cmap='gray')
-
+'''
+'''
 plt.figure()
 plt.subplot(1, 2, 1)
 plt.title('Dx')
@@ -90,7 +98,6 @@ plt.show()
 '''
 
 
-''' #Tracker test
+#Tracker test
 trackLK(I, J, 120, 85, 70, 40, 4, 0)
 print('dTrue: ' + str(dTrue))
-'''
