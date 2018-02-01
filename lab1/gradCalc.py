@@ -13,11 +13,7 @@ def gradCalc(I, J, ksize, sigma):
     lp2D = conv2(lp, np.transpose(lp))
     df = np.atleast_2d(-1.0/np.square(sigma) * np.arange(-ksize,ksize,1) * lp)
 
-    if I.all == 0:
-        #So that the function can be used for only one image
-        Ig = 0
-    else:
-        Ig = conv2(I, lp2D)
+    Ig = conv2(I, lp2D)
 
     Jg = conv2(J, lp2D)
     Jgdx = conv2(J, df, mode='same')
