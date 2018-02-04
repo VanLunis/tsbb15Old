@@ -17,5 +17,4 @@ def interpolImage(Im, Jgdx, Jgdy, du, top, bot, left, right):
     newIm = intepShift(Im[top:bot,left:right], [du[1], du[0]], mode='nearest')
     newDx = intepShift(Jgdx[top:bot,left:right], [du[1], du[0]], mode='nearest')
     newDy = intepShift(Jgdy[top:bot,left:right], [du[1], du[0]], mode='nearest')
-    print('******************INTERPOLATION DONE********************************')
     return (newIm, newDx, newDy)

@@ -10,10 +10,13 @@ from estimateT import estimateT
 from estimateE import estimateE
 from interpolate import interpolImage
 from lkTrack import trackLK
+from orientTensor import calcOrientTensor
+from harris import calcHarris, cornerThresh
 from scipy.ndimage.interpolation import shift as intepShift
 
 
 I, J, dTrue = get_cameraman()
+
 
 #Gradcalc test
 '''
@@ -97,7 +100,48 @@ plt.imshow(dyNew, cmap='gray')
 plt.show()
 '''
 
-
+'''
 #Tracker test
 trackLK(I, J, 120, 85, 70, 40, 4, 0)
 print('dTrue: ' + str(dTrue))
+'''
+
+
+'''
+# Orient tensor test
+T11, T12, T22 = calcOrientTensor(I,6,3,[10,10])
+plt.figure()
+plt.subplot(1, 3, 1)
+plt.title('T11')
+plt.imshow(T11, cmap='gray')
+plt.subplot(1, 3, 2)
+plt.title('T12')
+plt.imshow(T12, cmap='gray')
+plt.subplot(1, 3, 3)
+plt.title('T22')
+plt.imshow(T22, cmap='gray')
+plt.show()
+'''
+
+'''
+#Harris response test
+cornerIm = load_lab_image('cornertest.png')
+Ch = calcHarris(cornerIm, 6,3,[10,10], 0.05)
+plt.figure()
+plt.imshow(cornerIm, cmap='gray')
+
+plt.figure()
+plt.imshow(Ch, cmap='gray')
+plt.show()
+'''
+'''
+#Harris threshold test
+cornerIm = load_lab_image('cornertest.png')
+threshIm = cornerThresh(cornerIm, 6,3,[10,10], 0.05, 200000000)
+plt.figure()
+plt.imshow(cornerIm, cmap='gray')
+
+plt.figure()
+plt.imshow(threshIm, cmap='gray')
+plt.show()
+'''
