@@ -12,7 +12,7 @@ def calcOrientTensor(Im, gradKsize, gradSigma, window_size):
 
     convWindow = np.ones((window_size[0],window_size[1]), dtype=np.int)
 
-    T11 = conv2(dx*dx,convWindow)
-    T12 = conv2(dx*dy,convWindow)
-    T22 = conv2(dy*dy,convWindow)
+    T11 = conv2(dx*dx,convWindow, mode='same')
+    T12 = conv2(dx*dy,convWindow, mode='same')
+    T22 = conv2(dy*dy,convWindow, mode='same')
     return (T11, T12, T22)

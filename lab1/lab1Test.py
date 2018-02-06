@@ -11,7 +11,7 @@ from estimateE import estimateE
 from interpolate import interpolImage
 from lkTrack import trackLK
 from orientTensor import calcOrientTensor
-from harris import calcHarris, cornerThresh
+from harris import calcHarris, cornerThresh, harrisMax
 from scipy.ndimage.interpolation import shift as intepShift
 
 
@@ -134,14 +134,18 @@ plt.figure()
 plt.imshow(Ch, cmap='gray')
 plt.show()
 '''
-'''
+
 #Harris threshold test
 cornerIm = load_lab_image('cornertest.png')
-threshIm = cornerThresh(cornerIm, 6,3,[10,10], 0.05, 200000000)
+threshIm = cornerThresh(cornerIm, 6,3,[10,10], 0.05, 150000000)
 plt.figure()
 plt.imshow(cornerIm, cmap='gray')
 
 plt.figure()
 plt.imshow(threshIm, cmap='gray')
+# Harris point test
+row, col = harrisMax(cornerIm, 6,3,[10,10], 0.05, 150000000)
+#print('x, y: ' + str(col) +' ' + str(row))
+print('Row: ' +str(row.shape))
+print('Col: ' +str(col.shape))
 plt.show()
-'''

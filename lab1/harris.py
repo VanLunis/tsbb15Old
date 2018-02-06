@@ -15,7 +15,9 @@ def cornerThresh(Im, gradKsize, gradSigma, window_size, kappa, thresh):
     threshIm = np.multiply((Ch > thresh),Ch)
     return threshIm
 
+
 def harrisMax(Im, gradKsize, gradSigma, window_size, kappa, thresh):
     threshIm = cornerThresh(Im, gradKsize, gradSigma, window_size, kappa, thresh)
-    img_max = scipy.signal.order_filter(threshIm, np.ones((3,3), 9-1)
-    
+    img_max = scipy.signal.order_filter(threshIm, np.ones((3,3)), 9-1)
+    [row, col] = np.nonzero(threshIm == img_max)
+    return row, col
