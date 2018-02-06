@@ -143,9 +143,21 @@ plt.imshow(cornerIm, cmap='gray')
 
 plt.figure()
 plt.imshow(threshIm, cmap='gray')
-# Harris point test
-row, col = harrisMax(cornerIm, 6,3,[10,10], 0.05, 150000000)
-#print('x, y: ' + str(col) +' ' + str(row))
-print('Row: ' +str(row.shape))
-print('Col: ' +str(col.shape))
+
+'''
+# Harris point test OLD
+row, col = harrisMax(cornerIm, 6,3,[10,10], 0.05, 150000000, 5)
+print('Row: ' +str(row))
+print('Col: ' +str(col))
+plt.show()
+'''
+
+# Harris point test NEW
+maxes, bestMaxes, row, col = harrisMax(cornerIm, 6,3,[10,10], 0.05, 150000000, 5)
+print('x: ' + str(col))
+print('y: ' + str(row))
+plt.figure()
+plt.imshow(maxes, cmap='gray')
+plt.figure()
+plt.imshow(bestMaxes, cmap='gray')
 plt.show()
