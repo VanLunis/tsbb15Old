@@ -42,16 +42,16 @@ def trackLK(I, J, x, y, height, width, maxSteps, maxErr):
         e = estimateE(Ig, Jg, Jgdx, Jgdy, x, y, [height,width])
         dEst = dEst + np.linalg.solve(T,e)
 
-        print('********Results**********')
-        print('Step: ' + str(steps))
-        print('dEst: ' + str(dEst))
+        #print('********Results**********')
+        #print('Step: ' + str(steps))
+        #print('dEst: ' + str(dEst))
 
-
+        '''
         fig, axes = plt.subplots(1, 2, sharex=True, sharey=True)
         for im, name, ax in zip((IgWindowed, Jg[top:bot,left:right]), ('I','J itr: ' + str(steps) ), axes.flat):
             ax.imshow(im, cmap='gray')
             ax.set_title(name)
-
+        '''
 
         Jg, Jgdx, Jgdy = interpolImage(JgOld, JgdxOld, JgdyOld, [-dEst[0], -dEst[1]], 0, JgOld.shape[1], 0, JgOld.shape[0])
 
@@ -59,8 +59,8 @@ def trackLK(I, J, x, y, height, width, maxSteps, maxErr):
         steps = steps + 1
 
 
-        print('********End of step***********')
+        #print('********End of step***********')
 
 
-    plt.show()
+    #plt.show()
     return dEst

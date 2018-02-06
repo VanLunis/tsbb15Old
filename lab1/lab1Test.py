@@ -17,6 +17,17 @@ from scipy.ndimage.interpolation import shift as intepShift
 
 I, J, dTrue = get_cameraman()
 
+chess1 = load_lab_image('chessboard_1.png')
+chess2 = load_lab_image('chessboard_2.png')
+chess3 = load_lab_image('chessboard_3.png')
+chess4 = load_lab_image('chessboard_4.png')
+chess5 = load_lab_image('chessboard_5.png')
+chess6 = load_lab_image('chessboard_6.png')
+chess7 = load_lab_image('chessboard_7.png')
+chess8 = load_lab_image('chessboard_8.png')
+chess9 = load_lab_image('chessboard_9.png')
+chess10 = load_lab_image('chessboard_10.png')
+
 
 #Gradcalc test
 '''
@@ -135,6 +146,7 @@ plt.imshow(Ch, cmap='gray')
 plt.show()
 '''
 
+'''
 #Harris threshold test
 cornerIm = load_lab_image('cornertest.png')
 threshIm = cornerThresh(cornerIm, 6,3,[10,10], 0.05, 150000000)
@@ -143,19 +155,39 @@ plt.imshow(cornerIm, cmap='gray')
 
 plt.figure()
 plt.imshow(threshIm, cmap='gray')
+'''
 
 '''
-# Harris point test OLD
+#*****************************BAD*****************************
+# Harris point test OLD BasdjsabdgfdkjbnNONONO
 row, col = harrisMax(cornerIm, 6,3,[10,10], 0.05, 150000000, 5)
 print('Row: ' +str(row))
 print('Col: ' +str(col))
 plt.show()
+#*************************************************************
 '''
 
+'''
 # Harris point test NEW
 maxes, bestMaxes, row, col = harrisMax(cornerIm, 6,3,[10,10], 0.05, 150000000, 5)
 print('x: ' + str(col))
 print('y: ' + str(row))
+plt.figure()
+plt.imshow(maxes, cmap='gray')
+plt.figure()
+plt.imshow(bestMaxes, cmap='gray')
+plt.show()
+'''
+
+
+# Harris point test NEW
+maxes, bestMaxes, row, col = harrisMax(chess1, 6,3,[10,10], 0.05, 15000000, 5)
+print('x: ' + str(col))
+print('y: ' + str(row))
+plt.figure()
+plt.imshow(chess1, cmap='gray')
+plt.autoscale(False)
+plt.plot(col,row, 'ro')
 plt.figure()
 plt.imshow(maxes, cmap='gray')
 plt.figure()
