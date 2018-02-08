@@ -1,6 +1,6 @@
 import numpy as np
 import scipy
-from scipy.signal import convolve2d as conv2
+from scipy.signal import fftconvolve as conv2
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 

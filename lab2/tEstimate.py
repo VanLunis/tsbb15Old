@@ -1,20 +1,17 @@
 import numpy as np
 import scipy
 import math
-from scipy.signal import convolve2d as conv2
+from scipy.signal import fftconvolve as conv2
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 def tEstimateAll(dx, dy, lp2D):
-    # Tensor for a redion around all points
+    # Tensor for a region around all points
     T = np.empty((3,1))
 
-    dx = np.array(dx)
-    dy = np.array(dy)
-
-    T11 = dx*dx
-    T12 = dx*dy
-    T22 = dy*dy
+    T11 = np.multiply(dx,dx)
+    T12 = np.multiply(dx,dy)
+    T22 = np.multiply(dy,dy)
 
     T11 = conv2(T11, lp2D, mode='same')
     T12 = conv2(T12, lp2D, mode='same')

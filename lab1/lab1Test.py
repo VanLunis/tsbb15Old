@@ -134,9 +134,9 @@ plt.imshow(T22, cmap='gray')
 plt.show()
 '''
 
-'''
+
 #Harris response test
-cornerIm = load_lab_image('cornertest.png')
+cornerIm = load_lab_image('chessboard_1.png')
 Ch = calcHarris(cornerIm, 6,3,[10,10], 0.05)
 plt.figure()
 plt.imshow(cornerIm, cmap='gray')
@@ -144,19 +144,19 @@ plt.imshow(cornerIm, cmap='gray')
 plt.figure()
 plt.imshow(Ch, cmap='gray')
 plt.show()
-'''
+
 
 '''
 #Harris threshold test
-cornerIm = load_lab_image('cornertest.png')
+cornerIm = load_lab_image('chessboard_1.png')
 threshIm = cornerThresh(cornerIm, 6,3,[10,10], 0.05, 150000000)
 plt.figure()
 plt.imshow(cornerIm, cmap='gray')
 
 plt.figure()
 plt.imshow(threshIm, cmap='gray')
+plt.show()
 '''
-
 '''
 #*****************************BAD*****************************
 # Harris point test OLD BasdjsabdgfdkjbnNONONO
@@ -179,7 +179,7 @@ plt.imshow(bestMaxes, cmap='gray')
 plt.show()
 '''
 
-
+'''
 # Harris point test NEW
 maxes, bestMaxes, row, col = harrisMax(chess1, 6,3,[10,10], 0.05, 15000000, 5)
 print('x: ' + str(col))
@@ -193,3 +193,4 @@ plt.imshow(maxes, cmap='gray')
 plt.figure()
 plt.imshow(bestMaxes, cmap='gray')
 plt.show()
+'''
